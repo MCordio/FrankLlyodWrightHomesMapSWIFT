@@ -1,0 +1,37 @@
+import UIKit
+import MapKit
+
+
+class ViewController: UIViewController, MKMapViewDelegate {
+   
+    @IBOutlet var map: MKMapView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        
+        //setting the map region
+        let latitude: CLLocationDegrees = 33.606800
+        let longitude: CLLocationDegrees = -111.845360
+        let latDelta: CLLocationDegrees = 0.01
+        let lonDelta: CLLocationDegrees = 0.01
+        let span:MKCoordinateSpan = MKCoordinateSpanMake(latDelta, lonDelta)
+        let location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
+        let region:MKCoordinateRegion = MKCoordinateRegionMake(location, span)
+        map.setRegion(region, animated: true)
+        
+        //map annotations
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = location
+        annotation.title = "Taliesin West"
+        annotation.subtitle = "Design"
+        map.addAnnotation(annotation)
+        
+        
+        
+        
+        
+        // Do any additional setup after loading the view, typically from a nib.
+    }
+
+}
